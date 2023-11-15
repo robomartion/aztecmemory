@@ -1,0 +1,21 @@
+body {
+    font-family: "Arial", Arial, Helvetica, sans-serif, sans-serif;
+  }
+
+li{
+    list-style: none;
+}
+
+button{
+    font-size: 25px;
+    color: grey;
+    border-radius: 10px;
+    padding: 25px;
+    border: 2px solid grey;
+    margin-right: 15px;
+}
+
+button:hover{
+    background-color: lightgray;
+    transition: 0.3s;
+}
