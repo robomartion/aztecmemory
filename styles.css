@@ -61,9 +61,20 @@ button:hover{
 
 .landing{
     padding: 0px !important;
-    position: absolute;
+    position: absolute; 
     top: 50%;
   left: 20%;
   transform: translate(-50%, -50%);
     color: white;
+}
+
+.links{
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 15px;
+}
+
+.size{
+    padding-left: 10px;
+    font-size: 16px;
 }
