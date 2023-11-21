@@ -90,6 +90,10 @@ button:hover{
     display: none;  
 }
 
+.hide{
+    display: none;  
+}
+
 .shopping-item{
     padding-left: 30%;
 }
@@ -112,6 +116,9 @@ button:hover{
     .links{
         display: inline;
     }
+    .hide{
+      display: inline;  
+  }
     .shopping-item{
         padding-left: 10%;
     }
@@ -136,6 +143,9 @@ button:hover{
     .links{
         display: inline;
     }
+    .hide{
+      display: inline;  
+  }
     .shopping-item{
         padding-left: 10%;
     }
