@@ -82,6 +82,7 @@
          // with the sku or plan ID.
          stripe
            .redirectToCheckout({
+            shippingAddressCollection: ["AU", "NZ"],
              mode: mode,
              lineItems: items,
              successUrl:
