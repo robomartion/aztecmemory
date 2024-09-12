@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <script src="https://js.stripe.com/v3/"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.js" integrity="sha512-79j1YQOJuI8mLseq9icSQKT6bLlLtWknKwj1OpJZMdPt2pFBry3vQTt+NZuJw7NSd1pHhZlu0s12Ngqfa371EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.min.css" integrity="sha512-UiKdzM5DL+I+2YFxK+7TDedVyVm7HMp/bN85NeWMJNYortoll+Nd6PU9ZDrZiaOsdarOyk9egQm6LOJZi36L2g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 </head>
 
 <body>
@@ -18,9 +20,9 @@
 <div id="card">
 <h1>Aztec CFexpress 2.0 Type B card</h1>
 <h1 id = "inp">
-  <button id = "btn3" onclick = "changeImage3()" data-checkout-mode="payment" data-price-id="price_1PwCpnLWhQirH5CkYJcZ2zuN">512GB</button>
-  <button id = "btn" onclick = "changeImage()" data-checkout-mode="payment" data-price-id="price_1PwCqcLWhQirH5CkmFdgPp8m">1TB</button>
-  <button id = "btn2" onclick = "changeImage2()" data-checkout-mode="payment" data-price-id="price_1PwCscLWhQirH5Ckr0UqbgN3">2TB</button>
+  <button id = "btn3" onclick = "changeImage3()" >512GB</button>
+  <button id = "btn" onclick = "changeImage()">1TB</button>
+  <button id = "btn2" onclick = "changeImage2()">2TB</button>
   <p id = "para1">$299AUD</p>
   <script>
      var para1 = document.getElementById("para1");
@@ -31,6 +33,7 @@
         btn3.style.cssText = 'background-color: grey; color:white';
         btn.style.cssText = 'background-color: white; color:grey';
         btn2.style.cssText = 'background-color: white; color:grey';
+        currentProductOn = prodIds[_512GB];
      }
      function changeImage() {
         var inp = document.getElementById("inp");
@@ -39,6 +42,7 @@
         btn3.style.cssText = 'background-color: white; color:grey';
         btn.style.cssText = 'background-color: grey; color:white';
         btn2.style.cssText = 'background-color: white; color:grey';
+        currentProductOn = prodIds[_1TB];
      }
      function changeImage2() {
         var inp = document.getElementById("inp");
@@ -47,22 +51,33 @@
         btn3.style.cssText = 'background-color: white; color:grey';
         btn.style.cssText = 'background-color: white; color:grey';
         btn2.style.cssText = 'background-color: grey; color:white';
+        currentProductOn = prodIds[_2TB];
      }
   </script>
 
-<a href="./shopping.html" class="black-shopping-button" class="black">Add to cart</a>
+<a href="" onclick="incrementQuantity()" class="black-shopping-button" class="black">Quantity</a>
+<a href="" onclick="addToCart()" class="black-shopping-button" class="black">Add to cart</a>
 
 </div>
 
 <p style="margin: 25px; font-size: 12px; text-align: center; width: 40%; margin-left: 30%; margin-right: 30%; position: bottom;">Copyright © Aztec Memory LTD. Australia. Don't lose your shit™ is a registered trademark of Aztec Memory. Displayed storage size may differ depending on operating system. </p>
 
    <script>
+
+    var items = [];
+    const prodIds = {_512GB: "price_1PwCpnLWhQirH5CkYJcZ2zuN", _1TB: "price_1PwCqcLWhQirH5CkmFdgPp8m", _2TB: "price_1PwCscLWhQirH5Ckr0UqbgN3"};
+    var currentProductOn = prodIds[_512GB];
+
      // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
      var PUBLISHABLE_KEY = 'pk_test_51OEqCJLWhQirH5CkoRoWPz24jFvphQFL0Jzkb2UDpUCWvAMuLGHsA794ldPDfFv4VMi3QrI3TOQ2RgDIbFxCuivR003vreJroN';
      // Replace with the domain you want your users to be redirected back to after payment
      var DOMAIN = location.href.replace(/[^/]*$/, '');
 
      var stripe = Stripe(PUBLISHABLE_KEY);
+
+     function addToCart() {
+      
+     }
 
      // Handle any errors from Checkout
      var handleResult = function (result) {
@@ -72,18 +87,40 @@
        }
      };
 
-     document.querySelectorAll('button').forEach(function (button) {
-       button.addEventListener('click', function (e) {
-         var mode = e.target.dataset.checkoutMode;
-         var priceId = e.target.dataset.priceId;
-         var items = [{ price: priceId, quantity: 1 }];
+     function incrementQuantity() {
+      var find = items.filter((e) => {
+        return e.price == currentProductOn;
+      });
 
-         // Make the call to Stripe.js to redirect to the checkout page
-         // with the sku or plan ID.
+      if(!find) {
+        find = {price: currentProductOn, quantity: 0};
+      }
+
+      find.quantity++;
+      
+     }
+
+     function decrementQuantity() {
+      var find = items.filter((e) => {
+        return e.price == currentProductOn;
+      });
+
+      if(!find) {
+        find = {price: currentProductOn, quantity: 1};
+      }
+
+      find.quantity--;
+
+     }
+
+     function goToCheckout() {
+         var priceId = e.target.dataset.priceId;
+         
+
          stripe
            .redirectToCheckout({
             shippingAddressCollection: {allowedCountries: ["AU", "NZ"]},
-             mode: mode,
+             mode: "payment",
              lineItems: items,
              successUrl:
                DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
@@ -91,8 +128,7 @@
                DOMAIN + 'canceled.html?session_id={CHECKOUT_SESSION_ID}',
            })
            .then(handleResult);
-       });
-     });
+     }
    </script>
  </body>
  </html>
