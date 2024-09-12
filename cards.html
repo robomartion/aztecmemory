@@ -221,13 +221,11 @@
    }
 
    function goToCheckout() {
-       var priceId = "price_1PwCpnLWhQirH5CkYJcZ2zuN";
-       
        stripe
          .redirectToCheckout({
           shippingAddressCollection: {allowedCountries: ["AU", "NZ"]},
            mode: "payment",
-           lineItems: items,
+           lineItems: [{price: "price_1PwCpnLWhQirH5CkYJcZ2zuN", quantity: 1}],
            successUrl:
              DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
            cancelUrl:
