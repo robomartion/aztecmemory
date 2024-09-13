@@ -27,7 +27,34 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"
 ></script>
 <body>
-    <div class="navbar"><a class="black" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> <a class="links"> Compatibility list</a> <a href="./cards" class="links">Cards</a> <a href="./ssds" class="links">SSDs</a> <a href="./readers.html" class="links">Readers</a></div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="black navbar-brand" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> 
+      <button
+        data-mdb-collapse-init
+        class="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="./list" style="font-size: 16; margin: auto;"
+            >Compatibility list</a
+          >
+          <a class="nav-link" href="./cards" style="font-size: 18; margin: auto;">Cards</a>
+          <a class="nav-link" href="./ssds" style="font-size: 18; margin: auto;">SSDs</a>
+          <a class="nav-link active" href="./readers" style="font-size: 18; margin: auto;">Readers</a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  
     <style>
         /* Default height for small devices */
         #intro {
