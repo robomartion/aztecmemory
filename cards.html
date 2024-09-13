@@ -28,8 +28,36 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"
 ></script>
 <body>
-  <div class="navbar"><a class="black" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> <a class="links"> Compatibility list</a> <a href="./cards" class="links">Cards</a> <a href="./ssds" class="links">SSDs</a> <a href="./readers.html" class="links">Readers</a></div>
- 
+  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="black navbar-brand" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> 
+      <button
+        data-mdb-collapse-init
+        class="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="./list"
+            >Compatibility list</a
+          >
+          <a class="nav-link active" aria-current="page" href="./cards">Cards</a>
+          <a class="nav-link" href="./ssds">SSDs</a>
+          <a class="nav-link" href="./readers">Readers</a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+
 <section class="h-100">
   <div class="container h-100 py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -46,7 +74,7 @@
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2 p-5">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
                 <img
                   src="./card.png"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
@@ -61,8 +89,8 @@
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="1" type="number"
-                  class="form-control form-control-sm" />
+                <input id="512Qty" min="0" name="quantity" value="1" type="number"
+                  class="form-control form-control-sm"/>
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -82,7 +110,7 @@
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2 p-5">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
                 <img
                 src="./card.png"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
@@ -97,7 +125,7 @@
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="0" type="number"
+                <input id="1TBQty" min="0" name="quantity" value="0" type="number"
                   class="form-control form-control-sm" />
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
@@ -118,7 +146,7 @@
         <div class="card rounded-3 mb-4">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2 p-5">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5  p-md-0">
                 <img
                 src="./card.png"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
@@ -133,7 +161,7 @@
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1" min="0" name="quantity" value="0" type="number"
+                <input id="2TBQty" min="0" name="quantity" value="0" type="number"
                   class="form-control form-control-sm" />
 
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
@@ -157,13 +185,13 @@
               <input type="text" id="form1" class="form-control form-control-lg" />
               <label class="form-label" for="form1">Discount code</label>
             </div>
-            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-lg ms-3">Apply</button>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
-            <button  onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+            <button  onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Proceed to Pay</button>
           </div>
         </div>
         <div class="p-5"></div>
@@ -174,17 +202,12 @@
 </section>
 <script>
 
-  var items = [];
-  const prodIds = {"_512GB": "price_1PwCpnLWhQirH5CkYJcZ2zuN", "_1TB": "price_1PwCqcLWhQirH5CkmFdgPp8m", "_2TB": "price_1PwCscLWhQirH5Ckr0UqbgN3"};
-  var currentProductOn = prodIds["_512GB"];
-
-   // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
+  // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
    var PUBLISHABLE_KEY = 'pk_test_51OEqCJLWhQirH5CkoRoWPz24jFvphQFL0Jzkb2UDpUCWvAMuLGHsA794ldPDfFv4VMi3QrI3TOQ2RgDIbFxCuivR003vreJroN';
    // Replace with the domain you want your users to be redirected back to after payment
    var DOMAIN = location.href.replace(/[^/]*$/, '');
 
    var stripe = Stripe(PUBLISHABLE_KEY);
-
 
    // Handle any errors from Checkout
    var handleResult = function (result) {
@@ -194,44 +217,40 @@
      }
    };
 
-   function incrementQuantity() {
-    var find = items.filter((e) => {
-      return e.price == currentProductOn;
-    });
-
-    if(!find) {
-      find = {price: currentProductOn, quantity: 0};
-    }
-
-    find.quantity++;
-    
-   }
-
-   function decrementQuantity() {
-    var find = items.filter((e) => {
-      return e.price == currentProductOn;
-    });
-
-    if(!find) {
-      find = {price: currentProductOn, quantity: 1};
-    }
-
-    find.quantity--;
-
-   }
 
    function goToCheckout() {
+    console.log("CHECKOUT");
+    let items = [];
+    let ids = ["512Qty", "1TBQty", "2TBQty"];
+    let priceIds = ["price_1PwCpnLWhQirH5CkYJcZ2zuN", "price_1PwCqcLWhQirH5CkmFdgPp8m", "price_1PwCscLWhQirH5Ckr0UqbgN3"];
+
+    //NOTE: Get the quantities the user put in
+    for(let i = 0;  i < ids.length; ++i) {
+      let id = ids[i];
+
+      let qty = parseInt(document.getElementById(id).value);
+
+      if(qty > 0) {
+        items.push({price: priceIds[i], quantity: qty});
+      }
+    }
+
+    console.log(items);
+    
+
+    if(items.length > 0) {
        stripe
          .redirectToCheckout({
           shippingAddressCollection: {allowedCountries: ["AU", "NZ"]},
            mode: "payment",
-           lineItems: [{price: "price_1PwCpnLWhQirH5CkYJcZ2zuN", quantity: 1}],
+           lineItems: items,
            successUrl:
              DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
            cancelUrl:
              DOMAIN + 'cards.html?session_id={CHECKOUT_SESSION_ID}',
          })
          .then(handleResult);
+      }
    }
  </script>
 </body>
