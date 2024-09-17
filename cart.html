@@ -1,0 +1,241 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aztec - Don't Lose your Shit</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
+    rel="stylesheet"
+    />
+</head> 
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="black navbar-brand pl-5" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="./list">Compatibility list</a>
+          <a class="nav-link active" href="./cards" >Cards</a>
+          <a class="nav-link" href="./ssds" >SSDs</a>
+          <a class="nav-link" href="./readers" >Readers</a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+<section class="h-100">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0">Buy Cards</h3>
+          <div>
+            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+                  class="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
+                <img
+                  src="./card.png"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 512GB</p>
+                <p><span class="text-muted">Size: </span>512GB <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="512Qty" min="0" name="quantity" value="1" type="number"
+                  class="form-control form-control-sm"/>
+
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
+                <h5 class="mb-0">$199.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
+                <img
+                src="./card.png"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 1TB</p>
+                <p><span class="text-muted">Size: </span>1TB <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="1TBQty" min="0" name="quantity" value="0" type="number"
+                  class="form-control form-control-sm" />
+
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
+                <h5 class="mb-0">$299.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2 p-5  p-md-0">
+                <img
+                src="./card.png"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 2TB</p>
+                <p><span class="text-muted">Size: </span>2TB <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="2TBQty" min="0" name="quantity" value="0" type="number"
+                  class="form-control form-control-sm" />
+
+                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
+                <h5 class="mb-0">$399.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body p-4 d-flex flex-row">
+            <div data-mdb-input-init class="form-outline flex-fill">
+              <input type="text" id="form1" class="form-control form-control-lg" />
+              <label class="form-label" for="form1">Discount code</label>
+            </div>
+            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-lg ms-3">Apply</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <button  onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Proceed to Pay</button>
+          </div>
+        </div>
+        <div class="p-5"></div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+
+  // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
+   var PUBLISHABLE_KEY = 'pk_test_51OEqCJLWhQirH5CkoRoWPz24jFvphQFL0Jzkb2UDpUCWvAMuLGHsA794ldPDfFv4VMi3QrI3TOQ2RgDIbFxCuivR003vreJroN';
+   // Replace with the domain you want your users to be redirected back to after payment
+   var DOMAIN = location.href.replace(/[^/]*$/, '');
+
+   var stripe = Stripe(PUBLISHABLE_KEY);
+
+   // Handle any errors from Checkout
+   var handleResult = function (result) {
+     if (result.error) {
+       var displayError = document.getElementById('error-message');
+       displayError.textContent = result.error.message;
+     }
+   };
+
+
+   function goToCheckout() {
+    console.log("CHECKOUT");
+    let items = [];
+    let ids = ["512Qty", "1TBQty", "2TBQty"];
+    let priceIds = ["price_1PwCpnLWhQirH5CkYJcZ2zuN", "price_1PwCqcLWhQirH5CkmFdgPp8m", "price_1PwCscLWhQirH5Ckr0UqbgN3"];
+
+    //NOTE: Get the quantities the user put in
+    for(let i = 0;  i < ids.length; ++i) {
+      let id = ids[i];
+
+      let qty = parseInt(document.getElementById(id).value);
+
+      if(qty > 0) {
+        items.push({price: priceIds[i], quantity: qty});
+      }
+    }
+
+    if(items.length > 0) {
+       stripe
+         .redirectToCheckout({
+          shippingAddressCollection: {allowedCountries: ["AU", "NZ"]},
+           mode: "payment",
+           lineItems: items,
+           successUrl:
+             DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
+           cancelUrl:
+             DOMAIN + 'cards.html?session_id={CHECKOUT_SESSION_ID}',
+         })
+         .then(handleResult);
+      }
+   }
+ </script>
+</body>
+</html>

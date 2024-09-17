@@ -21,11 +21,10 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
     rel="stylesheet"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head> 
 <!-- MDB -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -46,31 +45,28 @@
     </div>
   </nav>
 <section class="h-100">
-  <div class="container h-100 py-5">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="container h-100 py-md-3">
+    <div class="row d-flex justify-content-center align-items-center ">
       <div class="col-10">
-
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 class="fw-normal mb-0">Buy Cards</h3>
-          <div>
-            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
-                  class="fas fa-angle-down mt-1"></i></a></p>
-          </div>
-        </div>
-
-        <div class="card rounded-3 mb-4">
+        <div class=" mb-4">
           <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
                 <img
                   src="./card.png"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 512GB</p>
-                <p><span class="text-muted">Size: </span>512GB <span class="text-muted">Color: </span>Grey</p>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-md-12 text-center p-4 pt-5">
+                <h2 class="mb-2">Aztec CFexpress 2.0 Type B card <span id="descr-size-id">512GB</span></h2>
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            </div>
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-3 col-lg-3 col-xl-3 text-center">
+                <p><span class="text-muted">Size: </span><span id="size-id">512GB</span></p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3 d-flex text-center">
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -84,161 +80,95 @@
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
-                <h5 class="mb-0">$199.00</h5>
+              <div class="col-md-3 col-lg-3 col-xl-3 p-3 text-center">
+                <h5 class="mb-0" id="price-id">$199.00</h5>
               </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
+              <div class="col-md-3 col-lg-3 col-xl-3 p-3 text-center">
+                <a class="btn btn-outline-dark btn-lg m-2 w-100" data-mdb-ripple-init onclick="addToCard()" role="button"
+                rel="nofollow">Add to Cart</a>
               </div>
+             
             </div>
           </div>
+         
         </div>
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
-                <img
-                src="./card.png"
-                  class="img-fluid rounded-3" alt="Cotton T-shirt">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 1TB</p>
-                <p><span class="text-muted">Size: </span>1TB <span class="text-muted">Color: </span>Grey</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="1TBQty" min="0" name="quantity" value="0" type="number"
-                  class="form-control form-control-sm" />
-
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
-                <h5 class="mb-0">$299.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
-              </div>
-            </div>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-4">
+          <a id="btn-512" class="btn btn-outline-dark btn-lg m-2 w-100" onclick="setBtn('btn-512')"  data-mdb-ripple-init role="button"
+                  rel="nofollow">512GB</a>
+                  </div>
+                  <div class="col-4">
+            <a id="btn-1TB" class="btn btn-lg btn-outline-dark m-2 w-100" onclick="setBtn('btn-1TB')"  data-mdb-ripple-init role="button"
+            rel="nofollow">1TB</a>
           </div>
-        </div>
-
-        <div class="card rounded-3 mb-4">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-2 col-lg-2 col-xl-2 p-5  p-md-0">
-                <img
-                src="./card.png"
-                  class="img-fluid rounded-3" alt="Cotton T-shirt">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-normal mb-2">Aztec CFexpress 2.0 Type B card 2TB</p>
-                <p><span class="text-muted">Size: </span>2TB <span class="text-muted">Color: </span>Grey</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="2TBQty" min="0" name="quantity" value="0" type="number"
-                  class="form-control form-control-sm" />
-
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div>
-              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 p-3">
-                <h5 class="mb-0">$399.00</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <!-- <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a> -->
-              </div>
-            </div>
+          <div class="col-4">
+            <a id="btn-2TB" class="btn btn-outline-dark btn-lg m-2 w-100" onclick="setBtn('btn-2TB')"  data-mdb-ripple-init role="button"
+            rel="nofollow">2TB</a>
           </div>
+          
         </div>
-
-        <div class="card mb-4">
-          <div class="card-body p-4 d-flex flex-row">
-            <div data-mdb-input-init class="form-outline flex-fill">
-              <input type="text" id="form1" class="form-control form-control-lg" />
-              <label class="form-label" for="form1">Discount code</label>
-            </div>
-            <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-lg ms-3">Apply</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <button  onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Proceed to Pay</button>
-          </div>
-        </div>
-        <div class="p-5"></div>
-
       </div>
-    </div>
+      
   </div>
 </section>
 <script>
 
-  // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
-   var PUBLISHABLE_KEY = 'pk_test_51OEqCJLWhQirH5CkoRoWPz24jFvphQFL0Jzkb2UDpUCWvAMuLGHsA794ldPDfFv4VMi3QrI3TOQ2RgDIbFxCuivR003vreJroN';
-   // Replace with the domain you want your users to be redirected back to after payment
-   var DOMAIN = location.href.replace(/[^/]*$/, '');
+  // NOTE: set the 512GB button to default
+  setBtn("btn-512");
 
-   var stripe = Stripe(PUBLISHABLE_KEY);
+  function setBtn(id) {
+    let ids = ["btn-512", "btn-1TB", "btn-2TB"];
 
-   // Handle any errors from Checkout
-   var handleResult = function (result) {
-     if (result.error) {
-       var displayError = document.getElementById('error-message');
-       displayError.textContent = result.error.message;
-     }
-   };
+    let idInfo = [{price: "$199", size: "512GB"}, {price: "$299", size: "1TB"}, {price: "$499", size: "2TB"}];
 
+    
+    let priceElm = document.getElementById("price-id");
+    let sizeElm = document.getElementById("size-id");
+    let desrcipElm = document.getElementById("descr-size-id");
+    
 
-   function goToCheckout() {
-    console.log("CHECKOUT");
-    let items = [];
-    let ids = ["512Qty", "1TBQty", "2TBQty"];
-    let priceIds = ["price_1PwCpnLWhQirH5CkYJcZ2zuN", "price_1PwCqcLWhQirH5CkmFdgPp8m", "price_1PwCscLWhQirH5Ckr0UqbgN3"];
+    for(let i = 0; i < ids.length; ++i) {
+      let elm = document.getElementById(ids[i]);
+      if(ids[i] == id) {
+        elm.classList.remove("btn-outline-dark");
+        elm.classList.add("btn-dark");
 
-    //NOTE: Get the quantities the user put in
-    for(let i = 0;  i < ids.length; ++i) {
-      let id = ids[i];
-
-      let qty = parseInt(document.getElementById(id).value);
-
-      if(qty > 0) {
-        items.push({price: priceIds[i], quantity: qty});
+        priceElm.innerHTML = idInfo[i].price;
+        sizeElm.innerHTML = idInfo[i].size;
+        desrcipElm.innerHTML = idInfo[i].size;
+      } else {
+        elm.classList.add("btn-outline-dark");
+        elm.classList.remove("btn-dark");
       }
     }
 
-    console.log(items);
+    
+    
     
 
-    if(items.length > 0) {
-       stripe
-         .redirectToCheckout({
-          shippingAddressCollection: {allowedCountries: ["AU", "NZ"]},
-           mode: "payment",
-           lineItems: items,
-           successUrl:
-             DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
-           cancelUrl:
-             DOMAIN + 'cards.html?session_id={CHECKOUT_SESSION_ID}',
-         })
-         .then(handleResult);
-      }
-   }
+  }
+function addToCard() {
+  let qty = (parseInt(document.getElementById("512Qty").value)).toString();
+  document.cookie = "512Qty=" + qty;
+
+  console.log(qty);
+  Toastify({
+  text: "Added to Cart",
+  duration: 2000,
+  close: true,
+  gravity: "top", // `top` or `bottom`
+  position: "left", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    // background: "linear-gradient(to right, #00b09b, #96c93d)",
+  },
+  onClick: function(){} // Callback after click
+}).showToast();
+}
  </script>
 </body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </html>
