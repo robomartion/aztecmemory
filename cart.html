@@ -85,8 +85,9 @@
 <script type="text/javascript" src="./meta_cart_elm.js"></script>
 <script>
 
-  function refreshCart(elm) {
+  function refreshCart() {
     let checkoutElm = document.getElementById("checkout-btn-id");
+    let elm = document.getElementById("parent-cart");
     //NOTE: Refresh the card count
     getTotalCartItems();
     if(totalCartItems == 0) {
@@ -123,7 +124,7 @@
     }
     sessionStorage.removeItem(nodeId);
 
-    refreshCart(elm);
+    refreshCart();
   }
 
   function updateQuantity(nodeId, sessionId) {
@@ -152,7 +153,9 @@
       }
     }
 
-    refreshCart(elm);
+    refreshCart();
+    
+    
   }
 
   outputCartCards();
