@@ -72,7 +72,7 @@
 
         <div class="card">
           <div class="card-body">
-            <button  onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">Proceed to Pay</button>
+            <button id="checkout-btn-id" onclick="goToCheckout()" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-lg">Proceed to Pay</button>
           </div>
         </div>
         <div class="p-5"></div>
@@ -84,6 +84,24 @@
 <script type="text/javascript" src="./cart.js"></script>
 <script type="text/javascript" src="./meta_cart_elm.js"></script>
 <script>
+
+  function refreshCart(elm) {
+    let checkoutElm = document.getElementById("checkout-btn-id");
+    //NOTE: Refresh the card count
+    getTotalCartItems();
+    if(totalCartItems == 0) {
+      elm.innerHTML = "<h2 style='text-align: center;'>Your Cart is <span style='color: red;'>Empty!</span>😱</h2>"
+
+      // NOTE: Update the pay button to show if available
+      checkoutElm.classList.add("btn-secondary"); 
+      checkoutElm.classList.remove("btn-primary"); 
+    } else {
+      // NOTE: Update the pay button to show if available
+      checkoutElm.classList.remove("btn-secondary"); 
+      checkoutElm.classList.add("btn-primary"); 
+    }
+    
+  }
 
   function deleteItem(nodeId) {
     let elm = document.getElementById(nodeId);
@@ -105,13 +123,7 @@
     }
     sessionStorage.removeItem(nodeId);
 
-    //NOTE: Refresh the card count
-    getTotalCartItems();
-
-    if(totalCartItems == 0) {
-      let parentElm = document.getElementById("parent-cart");
-      parentElm.innerHTML = "<h2 style='text-align: center;'>Your Cart is <span style='color: red;'>Empty!</span>😱</h2>"
-    }
+    refreshCart(elm);
   }
 
   function updateQuantity(nodeId, sessionId) {
@@ -140,11 +152,7 @@
       }
     }
 
-    //NOTE: Refresh the card count
-    getTotalCartItems();
-    if(totalCartItems == 0) {
-      elm.innerHTML = "<h2 style='text-align: center;'>Your Cart is <span style='color: red;'>Empty!</span>😱</h2>"
-    }
+    refreshCart(elm);
   }
 
   outputCartCards();
