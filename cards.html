@@ -39,6 +39,7 @@
           <a class="nav-link active" href="./cards" >Cards</a>
           <a class="nav-link" href="./ssds" >SSDs</a>
           <a class="nav-link" href="./readers" >Readers</a>
+          <a class="nav-link" href="./cart" style="margin: auto; text-align: left;"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count-id" class="badge rounded-pill badge-notification bg-danger"></span></a>
           
         </div>
       </div>
@@ -66,7 +67,7 @@
               <div class="col-md-3 col-lg-3 col-xl-3 text-center">
                 <p><span class="text-muted">Size: </span><span id="size-id">512GB</span></p>
               </div>
-              <div class="col-md-3 col-lg-3 col-xl-3 d-flex text-center">
+              <!-- <div class="col-md-3 col-lg-3 col-xl-3 d-flex text-center">
                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                   <i class="fas fa-minus"></i>
@@ -79,12 +80,12 @@
                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                   <i class="fas fa-plus"></i>
                 </button>
-              </div>
+              </div> -->
               <div class="col-md-3 col-lg-3 col-xl-3 p-3 text-center">
                 <h5 class="mb-0" id="price-id">$199.00</h5>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3 p-3 text-center">
-                <a class="btn btn-outline-dark btn-lg m-2 w-100" data-mdb-ripple-init onclick="addToCard()" role="button"
+                <a class="btn btn-outline-dark btn-lg m-2 w-100" data-mdb-ripple-init onclick="addToCart()" role="button"
                 rel="nofollow">Add to Cart</a>
               </div>
              
@@ -111,27 +112,26 @@
       
   </div>
 </section>
+<script type="text/javascript" src="./cart.js"></script>
 <script>
-
+  let idOn = "btn-512";
   // NOTE: set the 512GB button to default
   setBtn("btn-512");
-
+  getTotalCartItems();
   function setBtn(id) {
-    let ids = ["btn-512", "btn-1TB", "btn-2TB"];
-
-    let idInfo = [{price: "$199", size: "512GB"}, {price: "$299", size: "1TB"}, {price: "$499", size: "2TB"}];
-
     
     let priceElm = document.getElementById("price-id");
     let sizeElm = document.getElementById("size-id");
     let desrcipElm = document.getElementById("descr-size-id");
-    
 
+    idOn = id
+    
     for(let i = 0; i < ids.length; ++i) {
       let elm = document.getElementById(ids[i]);
       if(ids[i] == id) {
         elm.classList.remove("btn-outline-dark");
         elm.classList.add("btn-dark");
+
 
         priceElm.innerHTML = idInfo[i].price;
         sizeElm.innerHTML = idInfo[i].size;
@@ -147,13 +147,22 @@
     
 
   }
-function addToCard() {
-  let qty = (parseInt(document.getElementById("512Qty").value)).toString();
-  document.cookie = "512Qty=" + qty;
+function addToCart() {
+  let value = sessionStorage.getItem(idOn);
 
-  console.log(qty);
+  let existingCount = 1;
+  if(value) {
+    existingCount += parseInt(value);
+  }
+  sessionStorage.setItem(idOn, existingCount);
+
+  //NOTE: Refresh the card count
+  getTotalCartItems();
+
   Toastify({
-  text: "Added to Cart",
+  text: "Added to Cart\nGo To Cart Now?",
+  destination: "./cart.html",
+  newWindow: true,
   duration: 2000,
   close: true,
   gravity: "top", // `top` or `bottom`
