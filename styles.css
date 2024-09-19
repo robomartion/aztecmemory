@@ -1,4 +1,4 @@
-html{
+/* html{
     padding:0;
     margin: 0;
 }
@@ -19,9 +19,7 @@ body {
     padding: 0px
   }
 
-.content{
-    padding: 15px;
-}
+
 
 li{
     list-style: none;
@@ -44,21 +42,6 @@ button:hover{
     background-color: lightgray;
     transition: 0.3s;
 }
-
-.hero{
-    padding: 20px;
-    position: relative;
-  text-align: left;
-  color: white;
-  padding: 0px !important;
-}
-
-.hero-image{
-    width: 100%;
-    padding: 0px !important;
-    
-}
-
 
 .links{
     color: black;
@@ -180,4 +163,71 @@ button:hover{
 
   .black{
     color: black;
+  } */
+  .content{
+    padding: 15px;
+}
+
+  
+.hero{
+  padding: 20px;
+  position: relative;
+text-align: left;
+color: white;
+padding: 0px !important;
+}
+
+.hero-image{
+  width: 100%;
+  padding: 0px !important;
+  
+}
+
+
+
+  #intro {
+    background-image: url("./background.jpg");
+    height: 100vh;
+  }
+
+  /* Height for devices larger than 576px */
+  .navbar .nav-link {
+    color: #000 !important;
+  }
+
+
+#navbarSupportedContent {
+padding-left: 100px; 
+  }
+
+
+  /* On screens that are 992px or less, set the background color to blue */
+  @media screen and (max-width: 992px) {
+    #navbarSupportedContent {
+        padding-left: 0; 
+    }
+}
+
+  #main-header-img-div {
+    justify-content: left;
+    margin-left: 5cm;
+  }
+
+
+  /* On screens that are 992px or less, set the background color to blue */
+  @media screen and (max-width: 992px) {
+    #main-header-img-div {
+      justify-content: center;
+      margin-left: 0;
+    }
+}
+
+  #nav-cart-id {
+    margin: auto; 
+  }
+    /* On screens that are 992px or less, set the background color to blue */
+  @media screen and (max-width: 992px) {
+      #nav-cart-id {
+        margin: 0; 
+      }
   }

@@ -11,7 +11,6 @@ function getTotalCartItems() {
         let data = parseInt(sessionStorage.getItem(ids[i]));
 
         if(data) {
-            console.log(data)
             total += data;
         }
     }
@@ -30,3 +29,4 @@ function getTotalCartItems() {
     
     
 }
+getTotalCartItems();

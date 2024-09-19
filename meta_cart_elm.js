@@ -1,4 +1,4 @@
-function meta_create_cart_elm(parentDiv, parentId, size, input, price, startValue, inputId) {
+function meta_create_cart_elm(parentDiv, parentId, size, input, price, startValue, inputId, srcImg) {
 
     let element1 = document.createElement('div');
     element1.classList.add("card");
@@ -58,7 +58,7 @@ function meta_create_cart_elm(parentDiv, parentId, size, input, price, startValu
     let element5 = document.createElement('img');
     element5.classList.add("img-fluid");
     element5.classList.add("rounded-3");
-    element5.src = "./card.png";
+    element5.src = srcImg;
     element4.appendChild(element5);
     element4.appendChild(document.createTextNode(" "));
     element4.appendChild(document.createTextNode(" "));
@@ -214,9 +214,11 @@ function meta_create_cart_elm(parentDiv, parentId, size, input, price, startValu
     element13.classList.add("form-control");
     element13.classList.add("form-control-sm");
     element13.value = startValue;
+    
     element13.id = inputId;
     element13.addEventListener("input", function() { updateQuantity(inputId, parentId);  });
-    element13.setAttribute('type',"number");
+    element13.setAttribute('type', "number");
+    element13.min = 0;
     element10.appendChild(element13);
     element10.appendChild(document.createTextNode(" "));
     element10.appendChild(document.createTextNode(" "));

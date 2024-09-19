@@ -6,45 +6,14 @@
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <script src="https://js.stripe.com/v3/"></script>
     
-    <!-- Font Awesome -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
-    rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
 </head> 
-<!-- MDB -->
+<nav class="navbar navbar-expand-lg navbar-light"><div class="container-fluid"><a class="black navbar-brand pl-5" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><div class="navbar-nav ms-auto"><a class="nav-link" href="./list.html">Compatibility list</a><a class="nav-link active" href="./cards.html">Cards</a><a class="nav-link" href="./ssds.html">SSDs</a><a class="nav-link" href="./readers.html">Readers</a><a class="nav-link" href="./cart.html" id="nav-cart-id" style="text-align: left;"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count-id" class="badge rounded-pill badge-notification bg-danger"></span></a></div></div></div></nav>
 <body>
-
-
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="black navbar-brand pl-5" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-        </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="./list">Compatibility list</a>
-          <a class="nav-link active" href="./cards" >Cards</a>
-          <a class="nav-link" href="./ssds" >SSDs</a>
-          <a class="nav-link" href="./readers" >Readers</a>
-          <a class="nav-link" href="./cart" style="margin: auto; text-align: left;"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count-id" class="badge rounded-pill badge-notification bg-danger"></span></a>
-          
-        </div>
-      </div>
-    </div>
-  </nav>
 <section class="h-100">
   <div class="container h-100 py-5">
     <div class="row d-flex justify-content-center align-items-center">
@@ -132,9 +101,10 @@
 
     let v = parseInt(elm.value);
 
-    if(v) {
+    if(v > 0) {
       sessionStorage.setItem(sessionId, v);
     } else {
+      sessionStorage.removeItem(sessionId);
       v = 0;
     }
 
@@ -154,6 +124,7 @@
 
   function outputCartCards() {
     let elm = document.getElementById("parent-cart");
+    let srcImgs = ["512GB.png", "1TB.png", "2TB.png"];
 
     elm.innerHTML = "";
 
@@ -164,7 +135,7 @@
 
       if(qty) 
       {
-        meta_create_cart_elm(elm, ids[i], idInfo[i].size, "input", qty*parseInt(idInfo[i].price), qty, inputId);
+        meta_create_cart_elm(elm, ids[i], idInfo[i].size, "input", qty*parseInt(idInfo[i].price), qty, inputId, srcImgs[i]);
       }
     }
 
@@ -174,8 +145,6 @@
   }
 
   outputCartCards();
-
-  getTotalCartItems();
   // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
    var PUBLISHABLE_KEY = 'pk_test_51OEqCJLWhQirH5CkoRoWPz24jFvphQFL0Jzkb2UDpUCWvAMuLGHsA794ldPDfFv4VMi3QrI3TOQ2RgDIbFxCuivR003vreJroN';
    // Replace with the domain you want your users to be redirected back to after payment

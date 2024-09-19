@@ -4,47 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aztec - Don't Lose your Shit</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
-    <script src="https://js.stripe.com/v3/"></script>
-    
-    <!-- Font Awesome -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css"
-    rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
 </head> 
-<!-- MDB -->
-
+<nav class="navbar navbar-expand-lg navbar-light"><div class="container-fluid"><a class="black navbar-brand pl-5" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><div class="navbar-nav ms-auto"><a class="nav-link" href="./list.html">Compatibility list</a><a class="nav-link active" href="./cards.html">Cards</a><a class="nav-link" href="./ssds.html">SSDs</a><a class="nav-link" href="./readers.html">Readers</a><a class="nav-link" href="./cart.html" id="nav-cart-id" style="text-align: left;"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count-id" class="badge rounded-pill badge-notification bg-danger"></span></a></div></div></div></nav>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="black navbar-brand pl-5" href="index.html"><img src="logo.svg" width="20px"><b> AZTEC</b></a> <t class="size"><b>Don't lose your shit.™</b></t> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-        </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="./list">Compatibility list</a>
-          <a class="nav-link active" href="./cards" >Cards</a>
-          <a class="nav-link" href="./ssds" >SSDs</a>
-          <a class="nav-link" href="./readers" >Readers</a>
-          <a class="nav-link" href="./cart" style="margin: auto; text-align: left;"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count-id" class="badge rounded-pill badge-notification bg-danger"></span></a>
-          
-        </div>
-      </div>
-    </div>
-  </nav>
 <section class="h-100">
   <div class="container h-100 py-md-3">
     <div class="row d-flex justify-content-center align-items-center ">
@@ -53,7 +20,7 @@
           <div class="card-body p-4">
             <div class="row d-flex justify-content-center align-items-center">
               <div class="col-md-2 col-lg-2 col-xl-2 p-5 p-md-0">
-                <img
+                <img id="card-hero-img-id"
                   src="./card.png"
                   class="img-fluid rounded-3" alt="Cotton T-shirt">
               </div>
@@ -67,20 +34,6 @@
               <div class="col-md-3 col-lg-3 col-xl-3 text-center">
                 <p><span class="text-muted">Size: </span><span id="size-id">512GB</span></p>
               </div>
-              <!-- <div class="col-md-3 col-lg-3 col-xl-3 d-flex text-center">
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus"></i>
-                </button>
-
-                <input id="512Qty" min="0" name="quantity" value="1" type="number"
-                  class="form-control form-control-sm"/>
-
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </div> -->
               <div class="col-md-3 col-lg-3 col-xl-3 p-3 text-center">
                 <h5 class="mb-0" id="price-id">$199.00</h5>
               </div>
@@ -117,13 +70,13 @@
   let idOn = "btn-512";
   // NOTE: set the 512GB button to default
   setBtn("btn-512");
-  getTotalCartItems();
   function setBtn(id) {
     
     let priceElm = document.getElementById("price-id");
     let sizeElm = document.getElementById("size-id");
     let desrcipElm = document.getElementById("descr-size-id");
-
+    
+    let srcImgs = ["512GB.png", "1TB.png", "2TB.png"];
     idOn = id
     
     for(let i = 0; i < ids.length; ++i) {
@@ -131,7 +84,12 @@
       if(ids[i] == id) {
         elm.classList.remove("btn-outline-dark");
         elm.classList.add("btn-dark");
-
+        
+        let imgElm = document.getElementById("card-hero-img-id");
+        if(imgElm) {
+          let srcImg = srcImgs[i];
+          imgElm.src = srcImg;
+        }
 
         priceElm.innerHTML = "$" + idInfo[i].price;
         sizeElm.innerHTML = idInfo[i].size;
@@ -175,6 +133,7 @@ function addToCart() {
 }).showToast();
 }
  </script>
+ 
 </body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
