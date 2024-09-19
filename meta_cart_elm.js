@@ -300,7 +300,8 @@ function meta_create_cart_elm(parentDiv, parentId, size, input, price, startValu
     let element17 = document.createElement('h5');
     element17.classList.add("mb-0");
     element16.appendChild(element17);
-    element17.appendChild(document.createTextNode(price));
+    element17.appendChild(document.createTextNode("$" + price));
+    element17.id = parentId + "_price_id";
     element16.appendChild(document.createTextNode(" "));
     element16.appendChild(document.createTextNode(" "));
     element16.appendChild(document.createTextNode(" "));

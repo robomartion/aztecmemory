@@ -134,6 +134,21 @@
 
     if(v) {
       sessionStorage.setItem(sessionId, v);
+    } else {
+      v = 0;
+    }
+
+    //NOTE: Update the total price
+    let priceId = sessionId + "_price_id";
+    let priceElm = document.getElementById(priceId);
+
+    let index = ids.findIndex((e) => {
+      return (e == sessionId);
+    });
+    
+    if(index >= 0) {
+      let price = idInfo[index].price;
+      priceElm.innerHTML = "$" + (v * parseInt(price)).toString();
     }
   }
 
@@ -143,13 +158,13 @@
     elm.innerHTML = "";
 
     for(let i = 0; i < ids.length; ++i) {
-      let data = parseInt(sessionStorage.getItem(ids[i]));
+      let qty = parseInt(sessionStorage.getItem(ids[i]));
 
       let inputId = ids[i] + "_input";
 
-      if(data) 
+      if(qty) 
       {
-        meta_create_cart_elm(elm, ids[i], idInfo[i].size, "input", idInfo[i].price, data, inputId);
+        meta_create_cart_elm(elm, ids[i], idInfo[i].size, "input", qty*parseInt(idInfo[i].price), qty, inputId);
       }
     }
 
